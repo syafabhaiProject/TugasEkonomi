@@ -1,1 +1,886 @@
 
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ekonomi Syariah — Jejak Peradaban</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: #fff;
+            background:
+                linear-gradient(rgba(5, 15, 12, 0.78), rgba(5, 15, 12, 0.92)),
+                url("ekonom.png") center/cover fixed no-repeat;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+
+            background: rgba(8, 25, 20, 0.55);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: #d8b76a;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 14px;
+            opacity: .85;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #e2c477;
+            opacity: 1;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 100px 20px 60px;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            animation: fadeUp 1s ease;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 18px;
+            border-radius: 50px;
+            background: rgba(216, 183, 106, .15);
+            border: 1px solid rgba(216, 183, 106, .4);
+            color: #e6ca82;
+            font-size: 13px;
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: clamp(45px, 8vw, 85px);
+            line-height: 1;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, #fff, #e0c275);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.8;
+            color: #d9e2dd;
+            max-width: 720px;
+            margin: auto;
+        }
+
+        .scroll {
+            margin-top: 45px;
+            color: #d8b76a;
+            font-size: 13px;
+            letter-spacing: 2px;
+            animation: bounce 2s infinite;
+        }
+
+        /* GENERAL */
+        section {
+            padding: 100px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-title span {
+            color: #d8b76a;
+            font-size: 14px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-title h2 {
+            font-size: 42px;
+            margin-top: 10px;
+        }
+
+        .section-title p {
+            max-width: 650px;
+            margin: 15px auto 0;
+            color: #bdc9c3;
+            line-height: 1.7;
+        }
+
+        /* GLASS */
+        .glass {
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.25);
+        }
+
+        /* INTRO */
+        .intro {
+            max-width: 1000px;
+            margin: auto;
+            padding: 40px;
+        }
+
+        .intro p {
+            color: #d8e0dc;
+            font-size: 17px;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .quote {
+            border-left: 3px solid #d8b76a;
+            padding: 20px 25px;
+            margin-top: 30px;
+            color: #e7d8ad;
+            font-style: italic;
+            background: rgba(216,183,106,.06);
+        }
+
+        /* PRINCIPLES */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            padding: 30px;
+            transition: .35s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(216,183,106,.5);
+            background: rgba(255,255,255,.1);
+        }
+
+        .number {
+            font-size: 14px;
+            color: #d8b76a;
+            margin-bottom: 18px;
+            font-weight: bold;
+        }
+
+        .card h3 {
+            font-size: 21px;
+            margin-bottom: 12px;
+        }
+
+        .card p {
+            color: #bfcac5;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* HISTORY */
+        .history {
+            max-width: 950px;
+            margin: auto;
+            position: relative;
+        }
+
+        .history::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(
+                transparent,
+                #d8b76a,
+                transparent
+            );
+        }
+
+        .timeline {
+            position: relative;
+            margin-bottom: 45px;
+            width: 47%;
+            padding: 30px;
+        }
+
+        .timeline:nth-child(odd) {
+            margin-right: auto;
+        }
+
+        .timeline:nth-child(even) {
+            margin-left: auto;
+        }
+
+        .timeline::after {
+            content: "";
+            position: absolute;
+            top: 35px;
+            width: 15px;
+            height: 15px;
+            background: #d8b76a;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(216,183,106,.7);
+        }
+
+        .timeline:nth-child(odd)::after {
+            right: -8.5%;
+        }
+
+        .timeline:nth-child(even)::after {
+            left: -8.5%;
+        }
+
+        .timeline .year {
+            color: #d8b76a;
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .timeline h3 {
+            font-size: 24px;
+            margin-bottom: 14px;
+        }
+
+        .timeline p {
+            color: #c2cdc7;
+            line-height: 1.8;
+            font-size: 14px;
+        }
+
+        /* UTSMAN */
+        .story {
+            max-width: 1050px;
+            margin: auto;
+            padding: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story::before {
+            content: "عثمان";
+            position: absolute;
+            right: -20px;
+            top: -35px;
+            font-size: 150px;
+            color: rgba(216,183,106,.04);
+            font-family: serif;
+        }
+
+        .story h3 {
+            font-size: 32px;
+            margin-bottom: 20px;
+        }
+
+        .story h3 span {
+            color: #d8b76a;
+        }
+
+        .story p {
+            color: #ccd5d1;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .story-highlight {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 18px;
+            background: rgba(216,183,106,.08);
+            border: 1px solid rgba(216,183,106,.2);
+        }
+
+        .story-highlight strong {
+            color: #e5c878;
+        }
+
+        /* CONCEPT FLOW */
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .flow-item {
+            text-align: center;
+            padding: 30px 15px;
+            position: relative;
+        }
+
+        .flow-item:not(:last-child)::after {
+            content: "→";
+            position: absolute;
+            right: -17px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #d8b76a;
+            font-size: 25px;
+        }
+
+        .flow-icon {
+            font-size: 35px;
+            margin-bottom: 15px;
+        }
+
+        .flow h3 {
+            font-size: 17px;
+            margin-bottom: 8px;
+        }
+
+        .flow p {
+            font-size: 13px;
+            color: #aebbb5;
+            line-height: 1.6;
+        }
+
+        /* CLOSING */
+        .closing {
+            text-align: center;
+            max-width: 850px;
+            margin: auto;
+        }
+
+        .closing h2 {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+
+        .closing p {
+            color: #c2cdc7;
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        .gold {
+            color: #d8b76a;
+        }
+
+        footer {
+            padding: 35px;
+            text-align: center;
+            color: #718079;
+            border-top: 1px solid rgba(255,255,255,.08);
+            font-size: 13px;
+        }
+
+        /* ANIMATION */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(8px);
+            }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 700px) {
+
+            nav {
+                padding: 15px 5%;
+            }
+
+            nav .links {
+                display: none;
+            }
+
+            section {
+                padding: 75px 5%;
+            }
+
+            .section-title h2 {
+                font-size: 32px;
+            }
+
+            .history::before {
+                left: 10px;
+            }
+
+            .timeline,
+            .timeline:nth-child(odd),
+            .timeline:nth-child(even) {
+                width: 100%;
+                margin-left: 25px;
+                margin-right: 0;
+                padding: 25px;
+            }
+
+            .timeline:nth-child(odd)::after,
+            .timeline:nth-child(even)::after {
+                left: -22px;
+            }
+
+            .flow {
+                grid-template-columns: 1fr;
+            }
+
+            .flow-item:not(:last-child)::after {
+                content: "↓";
+                right: 50%;
+                top: auto;
+                bottom: -25px;
+                transform: translateX(50%);
+            }
+
+            .story {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">SYARIAH.</div>
+
+        <div class="links">
+            <a href="#pengertian">Pengertian</a>
+            <a href="#prinsip">Prinsip</a>
+            <a href="#sejarah">Sejarah</a>
+            <a href="#utsman">Kisah Utsman</a>
+        </div>
+    </nav>
+
+<h1> Thufail Khairul Fatihin</h1>
+    <!-- HERO -->
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                EKONOMI • ISLAM • PERADABAN
+            </div>
+
+            <h1>
+                Ekonomi<br>
+                Syariah
+            </h1>
+
+            <p>
+                Bukan hanya tentang bagaimana mendapatkan keuntungan,
+                tetapi bagaimana harta dikelola dengan adil, amanah,
+                dan memberi manfaat bagi kehidupan manusia.
+            </p>
+
+            <div class="scroll">
+                ↓ &nbsp; JELAJAHI SEJARAHNYA
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- PENGERTIAN -->
+    <section id="pengertian">
+
+        <div class="section-title">
+            <span>01 — Dasar</span>
+            <h2>Apa itu Ekonomi Syariah?</h2>
+            <p>
+                Sebuah sistem ekonomi yang berlandaskan prinsip-prinsip
+                Islam dalam mengatur aktivitas produksi, distribusi,
+                konsumsi, kepemilikan, dan transaksi.
+            </p>
+        </div>
+
+        <div class="intro glass">
+
+            <p>
+                Ekonomi syariah tidak berarti seseorang dilarang menjadi
+                kaya. Islam justru mengakui hak seseorang untuk memiliki
+                harta dan melakukan perdagangan.
+            </p>
+
+            <p>
+                Yang menjadi perhatian adalah <b>bagaimana harta tersebut
+                diperoleh, digunakan, dan memberikan manfaat</b>.
+                Karena itu, transaksi yang mengandung riba, gharar
+                (ketidakjelasan yang berlebihan), penipuan, dan aktivitas
+                yang dilarang syariah dihindari.
+            </p>
+
+            <div class="quote">
+                "Harta bukan sekadar sesuatu yang dikumpulkan,
+                tetapi juga sebuah amanah."
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PRINSIP -->
+    <section id="prinsip">
+
+        <div class="section-title">
+            <span>02 — Fondasi</span>
+            <h2>Prinsip Utama</h2>
+            <p>
+                Beberapa prinsip yang menjadi dasar dalam ekonomi syariah.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card glass">
+                <div class="number">01</div>
+                <h3>Keadilan</h3>
+                <p>
+                    Setiap transaksi harus dilakukan secara adil,
+                    tanpa eksploitasi dan tanpa merugikan pihak lain.
+                </p>
+            </div>
+
+            <div class="card glass">
+                <div class="number">02</div>
+                <h3>Kejujuran</h3>
+                <p>
+                    Pedagang dan pembeli harus memberikan informasi
+                    yang benar dan tidak melakukan penipuan.
+                </p>
+            </div>
+
+            <div class="card glass">
+                <div class="number">03</div>
+                <h3>Larangan Riba</h3>
+                <p>
+                    Islam melarang riba dan mendorong transaksi
+                    yang memiliki dasar aktivitas ekonomi yang jelas.
+                </p>
+            </div>
+
+            <div class="card glass">
+                <div class="number">04</div>
+                <h3>Amanah</h3>
+                <p>
+                    Kekayaan dipandang sebagai amanah sehingga
+                    penggunaannya harus mempertimbangkan tanggung jawab
+                    kepada masyarakat.
+                </p>
+            </div>
+
+            <div class="card glass">
+                <div class="number">05</div>
+                <h3>Maslahah</h3>
+                <p>
+                    Aktivitas ekonomi idealnya membawa manfaat
+                    dan tidak menimbulkan kerusakan bagi masyarakat.
+                </p>
+            </div>
+
+            <div class="card glass">
+                <div class="number">06</div>
+                <h3>Zakat & Sedekah</h3>
+                <p>
+                    Harta tidak hanya berputar pada kelompok tertentu,
+                    tetapi juga memiliki fungsi sosial melalui zakat,
+                    infak, sedekah, dan wakaf.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SEJARAH -->
+    <section id="sejarah">
+
+        <div class="section-title">
+            <span>03 — Jejak Waktu</span>
+            <h2>Ekonomi dalam Peradaban Islam</h2>
+            <p>
+                Prinsip ekonomi Islam tidak hanya menjadi teori,
+                tetapi berkembang dalam kehidupan masyarakat Muslim
+                sejak masa awal Islam.
+            </p>
+        </div>
+
+
+        <div class="history">
+
+            <div class="timeline glass">
+
+                <div class="year">ABAD KE-7</div>
+
+                <h3>Madinah</h3>
+
+                <p>
+                    Setelah hijrah, masyarakat Muslim di Madinah
+                    membangun kehidupan sosial dan ekonomi yang
+                    melibatkan perdagangan, pasar, zakat, sedekah,
+                    serta berbagai bentuk kerja sama.
+                </p>
+
+            </div>
+
+
+            <div class="timeline glass">
+
+                <div class="year">MASA KHULAFAUR RASYIDIN</div>
+
+                <h3>Harta & Tanggung Jawab</h3>
+
+                <p>
+                    Pada masa para khalifah, pengelolaan harta publik,
+                    baitul mal, zakat, perdagangan, dan distribusi
+                    menjadi bagian penting dari kehidupan masyarakat.
+                </p>
+
+            </div>
+
+
+            <div class="timeline glass">
+
+                <div class="year">MASA UTSMAN BIN AFFAN</div>
+
+                <h3>Perdagangan & Wakaf</h3>
+
+                <p>
+                    Utsman bin Affan dikenal sebagai seorang saudagar
+                    yang memiliki kekayaan. Dalam sejumlah riwayat,
+                    kekayaannya juga digunakan untuk membantu kepentingan
+                    masyarakat dan umat.
+                </p>
+
+            </div>
+
+
+            <div class="timeline glass">
+
+                <div class="year">BERLANJUT</div>
+
+                <h3>Perkembangan Peradaban</h3>
+
+                <p>
+                    Tradisi perdagangan, wakaf, zakat, dan lembaga
+                    keuangan terus berkembang dan menjadi bagian dari
+                    sejarah ekonomi masyarakat Muslim di berbagai wilayah.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- KISAH UTSMAN -->
+    <section id="utsman">
+
+        <div class="section-title">
+
+            <span>04 — Sebuah Kisah</span>
+
+            <h2>Utsman bin Affan</h2>
+
+            <p>
+                Ketika kekayaan tidak berhenti pada pemiliknya.
+            </p>
+
+        </div>
+
+
+        <div class="story glass">
+
+            <h3>
+                Seorang saudagar yang melihat
+                <span>harta sebagai amanah</span>
+            </h3>
+
+            <p>
+                Utsman bin Affan adalah salah satu sahabat Nabi Muhammad ﷺ
+                yang dikenal sebagai seorang pedagang dan memiliki
+                kemampuan ekonomi yang kuat.
+            </p>
+
+            <p>
+                Salah satu kisah yang terkenal adalah tentang
+                <b>sumur Rumah</b> di Madinah. Dalam riwayat yang masyhur,
+                sumur tersebut menjadi sumber air penting bagi masyarakat.
+                Utsman kemudian membeli sumur tersebut dan menyediakan
+                akses air bagi masyarakat Muslim.
+            </p>
+
+            <p>
+                Kisah tersebut sering digunakan untuk menggambarkan
+                bagaimana seseorang dapat menggunakan kepemilikan pribadi
+                untuk menghasilkan manfaat yang lebih luas bagi masyarakat.
+            </p>
+
+
+            <div class="story-highlight">
+
+                <strong>
+                    Apa hubungannya dengan ekonomi syariah?
+                </strong>
+
+                <p style="margin-top:12px;">
+                    Intinya bukan sekadar "memiliki banyak harta".
+                    Yang menarik adalah bagaimana harta tersebut dapat
+                    digunakan untuk kepentingan sosial dan kemaslahatan.
+                    Inilah salah satu gagasan penting dalam ekonomi Islam:
+                    <b>kepemilikan disertai tanggung jawab.</b>
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ALUR -->
+    <section>
+
+        <div class="section-title">
+
+            <span>05 — Cara Berpikir</span>
+
+            <h2>Dari Harta Menjadi Manfaat</h2>
+
+            <p>
+                Salah satu cara sederhana memahami tujuan sosial
+                dalam ekonomi syariah.
+            </p>
+
+        </div>
+
+
+        <div class="flow">
+
+            <div class="flow-item glass">
+                <div class="flow-icon">💰</div>
+                <h3>Harta</h3>
+                <p>
+                    Seseorang memiliki kekayaan melalui cara yang halal.
+                </p>
+            </div>
+
+
+            <div class="flow-item glass">
+                <div class="flow-icon">🤝</div>
+                <h3>Amanah</h3>
+                <p>
+                    Kekayaan tidak hanya dipandang sebagai hak,
+                    tetapi juga tanggung jawab.
+                </p>
+            </div>
+
+
+            <div class="flow-item glass">
+                <div class="flow-icon">⚖️</div>
+                <h3>Keadilan</h3>
+                <p>
+                    Aktivitas ekonomi dilakukan tanpa penipuan
+                    dan eksploitasi.
+                </p>
+            </div>
+
+
+            <div class="flow-item glass">
+                <div class="flow-icon">🌍</div>
+                <h3>Maslahah</h3>
+                <p>
+                    Hasil akhirnya diharapkan memberi manfaat
+                    bagi manusia dan masyarakat.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PENUTUP -->
+    <section>
+
+        <div class="closing">
+
+            <h2>
+                Ekonomi bukan hanya soal
+                <span class="gold">berapa banyak</span>.
+            </h2>
+
+            <p>
+                Pertanyaan yang lebih besar adalah:
+                <br><br>
+
+                <b>
+                    Dari mana harta itu berasal?
+                    Bagaimana harta itu digunakan?
+                    Dan siapa yang mendapatkan manfaat darinya?
+                </b>
+
+                <br><br>
+
+                Itulah salah satu cara melihat ekonomi syariah:
+                bukan sekadar sistem transaksi, tetapi juga
+                sebuah cara memandang hubungan antara
+                <span class="gold">harta, manusia, keadilan, dan tanggung jawab.</span>
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <footer>
+        EKONOMI SYARIAH • Jejak Ekonomi dalam Peradaban Islam
+    </footer>
+
+
+</body>
+</html>
